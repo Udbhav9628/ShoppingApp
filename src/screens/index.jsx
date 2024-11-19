@@ -1,16 +1,16 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import products from '../assets/data.json';
+import ItemCards from '../components/ItemCards';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 const Index = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={products}
                 keyExtractor={item => item.id}
-                renderItem={({ item }) => <View>
-                    <Text>{item.id}</Text>
-                </View>}
+                numColumns={2}
+                renderItem={({ item }) => <ItemCards item={item} />}
             />
         </View>
     );
@@ -18,4 +18,9 @@ const Index = () => {
 
 export default Index;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
+});
