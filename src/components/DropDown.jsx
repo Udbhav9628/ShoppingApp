@@ -2,64 +2,38 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SelectCountry } from 'react-native-element-dropdown';
 
-const local_data = [
+/// colors
+/// consents
+
+const orderByData = [
     {
-        value: '1',
-        lable: 'Country 1',
-        image: {
-            uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-        },
+        value: 'accending',
+        lable: 'Lowest to Highest',
     },
     {
-        value: '2',
-        lable: 'Country 2',
-        image: {
-            uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-        },
-    },
-    {
-        value: '3',
-        lable: 'Country 3',
-        image: {
-            uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-        },
-    },
-    {
-        value: '4',
-        lable: 'Country 4',
-        image: {
-            uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-        },
-    },
-    {
-        value: '5',
-        lable: 'Country 5',
-        image: {
-            uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-        },
-    },
+        value: 'descending',
+        lable: 'Highest to Lowest', 
+    }
 ];
 
-const DropDown = _props => {
-    const [country, setCountry] = useState('1');
+const DropDown = handleOrderBy => {
+    const [data, setData] = useState('');
 
     return (
         <SelectCountry
             style={styles.dropdown}
             selectedTextStyle={styles.selectedTextStyle}
             placeholderStyle={styles.placeholderStyle}
-            imageStyle={styles.imageStyle}
             iconStyle={styles.iconStyle}
             maxHeight={200}
-            value={country}
-            data={local_data}
+            value={data}
+            data={orderByData}
             valueField="value"
             labelField="lable"
-            imageField="image"
-            placeholder="Select country"
-            searchPlaceholder="Search..."
+            placeholder="Select"
             onChange={e => {
-                setCountry(e.value);
+                setData(e.value);
+                handleOrderBy(e.value)
             }}
         />
     );
@@ -69,17 +43,12 @@ export default DropDown;
 
 const styles = StyleSheet.create({
     dropdown: {
-        margin: 16,
-        height: 50,
-        width: 150,
+        // margin: 16,
+        height: 30,
+        width: 180,
         backgroundColor: '#EEEEEE',
-        borderRadius: 22,
+        borderRadius: 10,
         paddingHorizontal: 8,
-    },
-    imageStyle: {
-        width: 24,
-        height: 24,
-        borderRadius: 12,
     },
     placeholderStyle: {
         fontSize: 16,

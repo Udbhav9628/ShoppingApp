@@ -3,17 +3,21 @@ import index from './src/screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddToCart from './src/screens/addToCart';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
 
 function RootStack() {
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: false,
-    }}>
-      <Stack.Screen name="index" component={index} />
-      <Stack.Screen name="addToCart" component={AddToCart} />
-    </Stack.Navigator>
+    <Provider store={store}>
+      <Stack.Navigator screenOptions={{
+        headerShown: false,
+      }}>
+        <Stack.Screen name="index" component={index} />
+        <Stack.Screen name="addToCart" component={AddToCart} />
+      </Stack.Navigator>
+    </Provider>
   );
 }
 

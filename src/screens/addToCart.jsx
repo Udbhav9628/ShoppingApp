@@ -11,7 +11,7 @@ const AddToCart = () => {
 
             <View style={styles.itemContainer}>
                 <Image
-                    source={imageSource} // Replace with your image URL
+                    source={imageSource}
                     style={styles.productImage}
                 />
                 <View style={styles.detailsContainer}>

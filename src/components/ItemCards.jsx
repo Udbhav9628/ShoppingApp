@@ -1,14 +1,16 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import imageMapper from '../data/imageMapper'
+import { useNavigation } from '@react-navigation/native';
 
 const ItemCards = ({ item }) => {
-  const imageSource = require('../assets/products/101_1.jpg');
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={imageSource} />
+      <Image style={styles.image} source={imageMapper[item?.src_1]} />
       <Text>{item.title}</Text>
       <Text>$ {item.price}</Text>
-      <TouchableOpacity style={styles.addToCart}>
+      <TouchableOpacity onPress={() => navigation.navigate('addToCart')} style={styles.addToCart}>
         <Text style={styles.addToCartText}>Add to Cart</Text>
       </TouchableOpacity>
     </View>
